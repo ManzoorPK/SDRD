@@ -1,0 +1,59 @@
+﻿<Window x:Class="SDRDEncryption.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SDRDEncryption"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ListView x:Name="TableList" Grid.Row="2" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="ColumnList" Grid.Row="2" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="2" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="SelectedColumns" Grid.Row="2" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="4" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <StackPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="SelectAllButton"  Content="Select All >>" HorizontalAlignment="Center" />
+            <Button x:Name="SelectManyButton"  Content=" >>" HorizontalAlignment="Center" />
+            <Button x:Name="UnSelectManyButton"  Content="Remove" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        </StackPanel>
+
+
+        <StackPanel Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="ColumnSelectAllButton"  Content="Select All >>" HorizontalAlignment="Center" />
+            <Button x:Name="ColumnSelectManyButton"  Content=" >>" HorizontalAlignment="Center" />
+            <Button x:Name="ColumnUnSelectManyButton"  Content="Remove" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        </StackPanel>
+        <Label x:Name="label" Content="Database Encryption" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

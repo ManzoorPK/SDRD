@@ -1,0 +1,87 @@
+﻿<Page
+    x:Class="SDRDDBEncryption.Views.MainPage"
+    Style="{DynamicResource MahApps.Styles.Page}"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:properties="clr-namespace:SDRDDBEncryption.Properties"
+    mc:Ignorable="d"
+    d:DesignHeight="450" d:DesignWidth="800">
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBlock
+            Style="{StaticResource PageTitleStyle}"
+            Margin="{StaticResource MediumLeftMargin}"
+            Text="{x:Static properties:Resources.MainPageTitle}" />
+        <Grid
+            Grid.Row="1"
+            Margin="{StaticResource MediumLeftRightMargin}"
+            Background="{DynamicResource MahApps.Brushes.Gray10}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ListView x:Name="TableList" Grid.Row="2" d:ItemsSource="{d:SampleData ItemCount=5}" ItemsSource="{Binding Tables}" SelectedItem="{Binding SelectedTable, Mode=TwoWay}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <ListView x:Name="ColumnList" Grid.Row="2" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="1" ItemsSource="{Binding Columns}" SelectedItem="{Binding SelectionResult, Mode=TwoWay}" SelectionMode="Multiple" >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <ListView x:Name="SelectedColumns" Grid.Row="2" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="3" ItemsSource="{Binding SelectedColumns}" >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <StackPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+
+                <StackPanel Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10">
+                    <Button x:Name="ColumnSelectAllButton"  Content="Select All >>" Command="{Binding SelectAllCommand}" HorizontalAlignment="Stretch" />
+                    <Button x:Name="ColumnSelectManyButton"  Content=" >>" HorizontalAlignment="Stretch" Command="{Binding SelectCommand}" CommandParameter="{Binding SelectedItems, Mode=OneWay, ElementName=ColumnList}" />
+                    <Button x:Name="ColumnUnSelectManyButton"  Content="Remove" HorizontalAlignment="Stretch" VerticalAlignment="Top" Command="{Binding RemoveCommand}" CommandParameter="{Binding SelectedItems, Mode=OneWay, ElementName=SelectedColumns}"/>
+                </StackPanel>
+                <Label x:Name="label" Content="Database Encryption" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+                <Label x:Name="label1" Content="Tables" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top"/>
+                <Label x:Name="label2" Content="Columns" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top"/>
+                <Label x:Name="label3" Content="Columns to Encrypt" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="3" VerticalAlignment="Top"/>
+
+                <Button Content="{Binding StartPauseButtonText}" Command="{Binding StartCommand}" Grid.Row="3" Grid.Column="0" />
+                <Button Content="Stop" Command="{Binding StopCommand}" Grid.Row="3" Grid.Column="1" />
+
+                <ProgressBar Grid.Row="4" Grid.ColumnSpan="4" IsIndeterminate="True"  Visibility="{Binding IsRunning, Converter={StaticResource BoolToVis}, FallbackValue=Hidden}" >
+                    
+
+                </ProgressBar>
+            </Grid>
+            
+
+        </Grid>
+    </Grid>
+</Page>

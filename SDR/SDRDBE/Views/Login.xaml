@@ -1,0 +1,15 @@
+﻿<Window x:Class="SDRDBE.Views.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SDRDBE.Views"
+        mc:Ignorable="d"
+        Title="Login" Height="195" Width="377">
+    <Grid>
+        <Label x:Name="label" Content="User Name" HorizontalAlignment="Left" Margin="76,5,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy" Content="Password" HorizontalAlignment="Left" Margin="76,72,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtUserName" HorizontalAlignment="Center" Margin="0,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
+        <TextBox x:Name="txtPassword" HorizontalAlignment="Center" Margin="0,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
+    </Grid>
+</Window>
